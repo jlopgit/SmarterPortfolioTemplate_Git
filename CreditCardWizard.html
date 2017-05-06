@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Credit Card Wizard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style/form_style.css" media="screen" />
+  <script src="script/CreditCardWizard.js"></script>
+
+  <style>
+    
+    #header{
+      /*background-color: #20B2AA;*/
+      background-image: url('photos/money.jpg');
+      background-size: cover;
+      background-position: bottom center;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="clearfix container-fluid" id="header">
+
+  <!--navbar-->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      <!--Compress navbar links into one button when viewed on a phone-->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class = "navbar-brand" href="index.html"><span class="glyphicon glyphicon-stats logo"></span> Smarter Portfolio</a>
+      </div>
+
+      <!--Nav bar links. Will be put in a button when viewed on a phone-->
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html">HOME</a></li>
+          <!--drop drop of features link-->
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">FEATURES<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="PortfolioBuilder.html">PORTFOLIO BUILDER</a></li>
+              <li><a href="ExpectedGrowthCalculator.html">EXPECTED GROWTH CALCULATOR</a></li>
+              <li><a href="CreditCardWizard.html">CREDIT CARD WIZARD</a></li>
+            </ul>
+          </li>
+          <li><a href="AboutUs.html">ABOUT US</a></li>
+          <li><a href="FAQ.html">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--title-->
+  <div class="jumbotron text-center">
+    <h1>Credit Card Wizard</h1>
+    <div class="flip">
+        <a href="#"><h5 style="color:white; font-weight:bold;">About this Tool</h5></a>
+      </div>
+      <div class="panel">
+        <p>This Credit Card Wizard tool is here to help you find the ideal credit card for you. Simply fill out the forms, and we will give you recommendations for cards that satisfy your criteria. If you are unsure of your credit score, free tools such as CreditKarma can estimate your credit score for free.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- input form-->
+<div class = "custom-container container">
+
+  <div style="border-bottom: solid 1px #D3D3D3"><h3>The Wizard</h3></div><br><br>
+  
+  <form id="rendered-form">
+
+    <div class="form-group">
+      <label>What is your annual income? *</label> 
+      <input type="number" required="" class="form-control" id="number-income" aria-required="true">
+    </div>
+
+    <div class="form-group">
+      <label>What is your Credit Score? *</label>
+      <input type="number" required="" class="form-control" id="number-creditscore" aria-required="true">
+    </div>
+
+    <div class="form-group">
+      <label>What will be your primary expenses on this card? *</label>
+      <select type="select" required="" class="form-control" id="select-expenses" aria-required="true" onchange="getExpenses(this);">
+        <option value="option-1" selected="true"> </option>
+        <option value="option-2">General Spending</option> 
+        <option value="option-3">Travel</option>
+        <option value="option-4">Restaurants</option>
+        <option value="option-5">Groceries/Supermarkets</option>
+      </select> 
+    </div>
+
+    <div class="form-group">
+      <label>Do you want a credit card with rotating higher-reward categories? *</label>
+      <select type="select" required="" class="form-control" id="select-rotating" aria-required="true" onchange="getRewards(this);">
+        <option value="option-1" selected="true"> </option>
+        <option value="option-2">Yes</option> 
+        <option value="option-3">No</option>
+      </select> 
+    </div>
+
+    <div class="form-group">
+      <label>Do you prefer cashback or travel reward points? *</label>
+      <select type="select" required="" class="form-control" id="select-pointspref" aria-required="true" onchange="getPoints(this);">
+        <option value="option-1" selected="true"> </option> 
+        <option value="option-2">Cashback</option> 
+        <option value="option-3">Travel</option>
+        <option value="option-4">I don't care</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Are you willing to pay an annual fee? *</label>
+      <select type="select" required="" class="form-control" id="select-annualfee" aria-required="true" onchange="getFee(this);">
+        <option value="option-1" selected="true"> </option> 
+        <option value="option-2">Yes</option> 
+        <option value="option-3">No</option>
+    </select>
+    </div>
+
+    <div class="form-group">
+      <label>Will you try a Credit Card that waives the first annual fee? *</label>
+      <select type="select" required="" class="form-control" id="select-waive" aria-required="true" onchange="getWaive(this);">
+      <option value="option-1" selected="true"> </option>
+      <option value="option-2">Yes</option>
+      <option value="option-3">No</option> 
+    </select>
+    </div>
+
+    <div class="form-group">
+      <label>Do you want to veto any payment networks? *</label>
+      <div class="checkbox-group">
+      <input type="checkbox" id="checkbox-group-veto-0" value="Visa" selected=""> <label for="checkbox-group-veto-0">Visa</label><br>
+              
+      <input type="checkbox" id="checkbox-group-veto-1" value="MasterCard" selected=""> <label for="checkbox-group-veto-1">MasterCard</label><br>
+
+      <input type="checkbox" id="checkbox-group-veto-2" value="Discover" selected=""> <label for="checkbox-group-veto-2">Discover</label><br>
+      
+      <input type="checkbox" id="checkbox-group-veto-3" value="American Express" selected=""> <label for="checkbox-group-veto-3">American Express</label>
+     </div>
+    </div>
+
+    <!--call retrieval functions, initiate modal to print results-->
+    <div class="form-group">
+      <button type="button" class="button-input btn btn-success" id="button-submit" onclick="getTextboxInput(); getNetworks(); printResult();" data-toggle="modal" data-target="#modalResult" >Submit</button>
+    </div>
+
+  </form>
+
+</div>
+
+  <!-- Modal Result -->
+    <div class="modal fade" id="modalResult" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sample Result- Returned Input</h4>
+        </div>
+        <div class="modal-body">
+          <p id="sampleResultIncome"></p>
+          <p id="sampleResultCreditScore"></p>
+          <p id="sampleResultExpenses"></p>
+          <p id="sampleResultRewards"></p>
+          <p id="sampleResultPoints"></p>   
+          <p id="sampleResultFee"></p> 
+          <p id="sampleResultWaive"></p> 
+          <p id="sampleResultNetwork"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+</body>
+</html>
+

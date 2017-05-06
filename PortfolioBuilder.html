@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Portfolio Builder</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style/form_style.css" media="screen" />
+  <script src="script/PortfolioBuilder.js"></script>
+
+  <style>
+
+    #header{
+      /*background-color: #20B2AA;*/
+      background-image: url('photos/coins.jpg');
+      background-size: cover;
+      background-position: bottom center;
+      /*min-height: 500px;*/
+    }
+    
+  </style>
+</head>
+
+<body>
+
+<div class="clearfix container-fluid" id="header">
+
+  <!-- navbar -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      <!--Compress navbar links into one button when viewed on a phone-->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class = "navbar-brand" href="index.html"><span class="glyphicon glyphicon-stats logo"></span> Smarter Portfolio</a>
+      </div>
+
+      <!--Nav bar links. Will be put in a button when viewed on a phone-->
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html">HOME</a></li>
+          <!--drop drop of features link-->
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">FEATURES<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="PortfolioBuilder.html">PORTFOLIO BUILDER</a></li>
+              <li><a href="ExpectedGrowthCalculator.html">EXPECTED GROWTH CALCULATOR</a></li>
+              <li><a href="CreditCardWizard.html">CREDIT CARD WIZARD</a></li>
+            </ul>
+          </li>
+          <li><a href="AboutUs.html">ABOUT US</a></li>
+          <li><a href="FAQ.html">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- title -->
+  <div class="jumbotron text-center">
+    
+    <div class="container-fluid title">
+      <h1>Portfolio Builder</h1>
+    </div>  
+    
+    <div class="container info">
+      <div class="flip">
+        <a href="#"><h5 style="color:white; font-weight:bold;">About this Tool</h5></a>
+      </div>
+      <div class="panel">
+        <p>This Portfolio Builder tool is here to help you properly determine the asset allocation for your investments, to optimize your returns whilst maintaining safety against negative market swings. We recommend investing your money in index funds of the appropriate asset types.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!--input form-->
+<div class = "custom-container container">
+
+  <div style="border-bottom: solid 1px #D3D3D3"><h3>The Builder</h3></div><br><br>
+
+  <form id="rendered-form"> 
+ 
+    <div class="form-group">
+      <label>What is your age? *</label> 
+      <input type="number" required="" min="0" max="150" class="form-control" id="number-age" aria-required="true">
+    </div>
+
+    <div class="form-group">
+      <label>How much money are you looking to invest? *</label> 
+      <input type="number" required="" min="1" class="form-control" id="number-capital" aria-required="true">
+    </div>
+
+    <div class="form-group">
+      <label>What is the investment goal? *</label>
+      <select type="select" required="" class="form-control"  id="select-goal"
+      aria-required="true" onchange="getGoal(this);">
+        <option value="option-1" selected = "true"> </option>
+        <option value="option-2">Retirement Planning</option> 
+        <option value="option-3">Wealth Accumulation</option> 
+        <option value="option-4">Safety Net</option></select> 
+    </div>
+
+    <div class="form-group">
+      <label>What is your risk preference? *</label> 
+      <select type="select" required="" class="form-control" id="select-1474621416872" aria-required="true" onchange="getPreference(this);">
+        <option value="option-1" selected="true"> </option> 
+        <option value="option-2">Conservative</option> 
+        <option value="option-3">Moderate</option>
+        <option value="option-4">Aggressive</option>
+      </select> 
+    </div>
+
+    <div class="form-group">
+      <label>Diversify with international stocks? *</label>
+      <div class="checkbox-group">
+        <input type="checkbox" class="checkbox-group" id="checkbox-1474621289446" value="Yes" selected=""> <label for="checkbox-1474621289446">Yes</label>
+                  
+        <input type="checkbox" class="checkbox-group" id="checkbox-1474621289447" value="No" selected=""> <label for="checkbox-1474621289447">No</label>
+      </div>
+    </div><br>
+
+    <!--call retrieval functions, initiate modal to print results. 
+    changed button type from "submit" to "button"-->
+    <div class="form-group">
+      <button type="button" class="button-input btn btn-success" id="button-retirement" onclick="getTextBoxInput(); getInternational(); printResult();" data-toggle="modal" data-target="#modalResult">Submit</button>
+    </div> 
+
+  </form>
+</div>
+
+<!-- Modal Result-->
+  <div class="modal fade" id="modalResult" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sample Result- Portfoliobuilder</h4>
+        </div>
+        <div class="modal-body">
+          <p id="sampleResultAge"></p>
+          <p id="sampleResultMoneyAmount"></p>
+          <p id="sampleResultGoal"></p>
+          <p id="sampleResultPreference"></p>
+          <p id="sampleResultInternational"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
+

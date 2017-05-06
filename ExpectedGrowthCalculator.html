@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Expected Growth Calculator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style/form_style.css" media="screen" />
+  <script src="script/ExpectedGrowthCalculator.js"></script>
+  
+  <style>
+    
+    #header{
+      background-image: url('photos/someguy.jpg');
+      background-size: cover;
+      background-position: center center;
+      /*min-height: 500px;*/
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="clearfix container-fluid" id="header">
+
+  <!--navbar-->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      <!--Compress navbar links into one button when viewed on a phone-->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class = "navbar-brand" href="index.html"><span class="glyphicon glyphicon-stats logo"></span> Smarter Portfolio</a>
+      </div>
+
+      <!--Nav bar links. Will be put in a button when viewed on a phone-->
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html">HOME</a></li>
+          <!--drop drop of features link-->
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">FEATURES<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="PortfolioBuilder.html">PORTFOLIO BUILDER</a></li>
+              <li><a href="ExpectedGrowthCalculator.html">EXPECTED GROWTH CALCULATOR</a></li>
+              <li><a href="CreditCardWizard.html">CREDIT CARD WIZARD</a></li>
+            </ul>
+          </li>
+          <li><a href="AboutUs.html">ABOUT US</a></li>
+          <li><a href="FAQ.html">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--title-->
+  <div class="jumbotron text-center">
+    <h1>Expected Growth Calculator</h1>
+    <div class="container info">
+      <div class="flip">
+        <a href="#"><h5 style="color:white; font-weight:bold;">About this Tool</h5></a>
+      </div>
+      <div class="panel">
+        <p>This Expected Growth Calculator is here to help you understand the potential of your investments. Based on long-term performance trends of the market, it estimates the growth of your investments over time. It is not accurate for short periods of time, and not even entirely accurate for longer periods of time.</p>
+      </div>
+    </div>
+  </div>
+    
+</div>
+
+<!--input form-->
+<div class = "custom-container container">
+
+  <div style="border-bottom: solid 1px #D3D3D3"><h3>The Calculator</h3></div><br><br>
+
+  <form id="rendered-form">
+
+   <div class="form-group">
+     <label>What is the initial value of your investments? *</label> 
+     <input type="number" required="" class="form-control" id="number-1" aria-required="true">
+   </div>
+
+   <div class="form-group">
+     <label>What is the expected annual percentage return on your investments? *</label> 
+     <input type="number" required="" class="form-control" id="number-2" aria-required="true">
+    </div>
+
+   <div class="form-group">
+     <label>How many elapsed years do you want to calculate for? *</label> 
+     <input type="number" required="" class="form-control" id="number-3" aria-required="true">
+    </div><br>
+
+    <!-- run getInput, printResult, and initiate Modal to show results at button click-->
+    <div class="form-group">
+      <button type="button" class="button-input btn btn-success" id="button-submit" onclick="getInput(); printResult();" data-toggle="modal" data-target="#modalResult">Submit</button>
+    </div> 
+
+  </form>
+</div>
+
+<!-- Modal Result -->
+  <div class="modal fade" id="modalResult" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sample Result- Returned Input</h4>
+        </div>
+        <div class="modal-body">
+          <p id="sampleResultInvestmentValue"></p>
+          <p id="sampleResultPercentage"></p>
+          <p id="sampleResultYears"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+

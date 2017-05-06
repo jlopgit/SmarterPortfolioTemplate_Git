@@ -1,0 +1,144 @@
+ /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      background-color: transparent;
+      margin-bottom: 0;
+      border-radius: 0;
+      border:0;
+    }
+    
+    /* Change font color of the left side of the nav bar to white*/
+    .navbar-default .navbar-nav > li > a {
+      color : white !important;
+    }
+
+    /* White background when mouse hovers the Menu text*/
+    .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: black !important;
+      background-color: #fff !important;
+    }
+
+    /*Underline left side of the navbar.*/
+    .navbar-default .navbar-brand{
+      color: white !important;
+      border-bottom: solid white;
+    }
+
+    /* Underline right side of the navbar*/
+    .navbar .navbar-nav {
+      float: none;
+      border-bottom: solid white;
+    }
+
+     /*-- change navbar dropdown color --*/
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a,.navbar-default .navbar-nav .open .dropdown-menu {
+      background-color:transparent; 
+      color: white;
+    }
+
+    /*change the color of the drop down icon when being viewed on smaller screens.*/
+    .navbar .navbar-toggle .icon-bar{
+      background-color: white;
+    }
+
+  	/*font color of link stays black when hovered */
+  	a:link{
+  		text-decoration: none;
+  		color: black;
+  	}
+
+    p{
+      word-wrap: break-word;
+    }
+
+    /*center image in left container in the about smart porf section*/
+    .left-image{
+      /*padding-top: 10px;*/
+      text-align: right;
+    }
+
+    /*set size of image in the left container in the about smart porf section*/
+    .small-logo {
+      font-size: 350px;
+    }
+
+    .mission{
+      /*font-size: 17px;*/
+      margin-top: 100px;
+    }
+
+    .headerJumbotron{
+      background-color: transparent;
+      color: white;
+    }
+
+    .developersJumbotron{
+      background-color: transparent;
+    }
+
+    .thumbnails{
+      margin-top: 100px;
+      background-color: #f6f6f6;
+      padding-bottom: 50px;
+    }
+
+    .thumbnail{
+      background-color: transparent;
+      box-shadow: 0 0 2px;
+    }
+
+    /*resize, and align left image on smaller screens*/
+    @media screen and (max-width: 1200px) {
+      .left-image{
+        padding-top: 50px;
+        font-size: 300px;
+      }
+    }
+
+    /*resize, and align left image on smaller screens*/
+    @media screen and (max-width: 978px) {
+      .left-image{
+        padding-top: 70px;
+        font-size: 300px;
+      }
+      .thumbnails{
+        margin-top: 50px;
+      }
+    }
+
+    /*resize and recenter image when on mobile view. Also resize thumbnails*/
+    @media screen and (max-width: 768px) {
+     .left-image {
+        text-align: center;
+        margin: 25px 0;
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+      .small-logo {
+        font-size: 300px;
+      }
+      .thumbnail{
+        border: 0;
+      }
+      .mission{
+        padding: 35px;
+        margin-top: 0px;
+      }
+      .col-sm-3{
+        padding-bottom: 50px;
+      }
+      .thumbnails{
+        padding: 40px;
+      }
+      #header{
+        height: auto;
+      }
+       /*Remove bottom border on the left side of the navbar*/
+      .navbar-default .navbar-brand{
+        border-bottom: 0px;
+      }
+      /*set navbar opacity on smaller screens*/
+      .navbar{
+        background: black;
+        opacity: 0.8;
+      }
+    }

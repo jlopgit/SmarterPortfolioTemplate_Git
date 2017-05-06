@@ -1,0 +1,175 @@
+/* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      background-color: transparent;
+      border-radius: 0;
+      border: 0;
+    }
+
+    /* Place navbar nav to the center of the heading, underline text within navbar*/
+    .navbar .navbar-nav {
+      display: inline-block;
+      float: none;
+      border-bottom: solid white;
+    }
+
+    /* Place navbar features dropdown in the center of the heading*/
+    .navbar .navbar-collapse {
+      text-align: center;
+    }
+
+    /* Change font color of the nav bar to white*/
+    .navbar-default .navbar-nav > li > a {
+      color : white !important;
+    }
+
+    /*White background when mouse hovers the Menu text*/
+    .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: black !important;
+      background-color: #fff !important;
+    }
+
+    /*Change font color of nav bar header to white*/
+    .navbar-default .navbar-brand{
+      color: white !important;
+    }
+
+     /* change navbar dropdown font color, background to white*/
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a,.navbar-default .navbar-nav .open .dropdown-menu {
+      background-color:transparent; 
+      color: white;
+    }
+
+    /*change the color of the drop down icon when being viewed on smaller screens.*/
+    .navbar .navbar-toggle .icon-bar{
+      background-color: white;
+    }
+
+    /*font color of page links are black even when clicked*/
+    a{
+     color: black;
+    }
+
+    /*font color of link stays black when hovered */
+    a:link{
+      text-decoration: none;
+      color: black;
+    }
+
+    /*font color of link stays black even after it is clicked*/
+    a.visited{
+      text-decoration: none;
+      color: black;
+    }
+
+    /*Icons for our tools*/
+    .logo-small {
+      font-size: 110px;
+    }
+
+    /*Icon for the about us section*/
+    .logo{
+      font-size: 150px;
+    }
+
+    /*container for background layer and texts. Height is same as body.*/
+    #box{
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+
+    /*layer above the background image*/
+    /*set it behind the texts*/
+    /*set it to the dimensions of the box and body container.*/
+    #box .bg{
+      background: black;
+      opacity: 0.2;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      /*border-radius: 25px;
+      box-shadow: 0 0 5px;*/
+    }
+
+    /*set jumbotron transparent, contents white, and add bottom border*/
+    .jumbotron{
+      background: transparent;
+      color: white;
+      border-bottom: solid;
+      text-shadow: 0 1px black;
+    }
+
+    .jumbotron p{
+      text-shadow: 0 0 black !important;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /*set contents of tools to white*/
+    .tools{
+      color: white;
+      text-shadow: 0 1px black;
+      margin-bottom: 12px;
+    }
+
+    /*set link colors to white in tools section*/
+    .tools a{
+      color: white;
+    }
+
+    /*add top padding so there's enough space in the box when hovered*/
+    .col-sm-4{
+      padding-top: 20px;
+    }
+
+    .tools .col-sm-4:hover{
+      box-shadow: 0 0 5px;
+    }
+
+    html, body{
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
+  
+    /* Put space between feature columns when viewed from a mobile device */
+    /* add bottom padding so there's enough space within each box when hovered*/
+    @media (max-width: 768px) {
+      .col-sm-4{
+        padding-bottom: 10px;
+        margin-bottom: 50px; 
+      }
+
+      /* Remove the navbar's default margin-bottom and rounded borders */
+      .navbar {
+        border: 0;
+        border-bottom: solid white;
+      }      
+
+      /* Remove bottom border navbar text*/
+      .navbar .navbar-nav {
+        border-bottom: 0;
+      }
+
+      /*extend container height to body*/
+      #box{
+        height: auto;
+        width: auto;
+      }
+
+      body{
+        overflow: visible;
+        background-position: bottom center;
+      }
+       /*navbar dropdown- text is aligned to center*/
+      .navbar-default .navbar-nav .open .dropdown-menu>li>a,.navbar-default .navbar-nav .open .dropdown-menu
+      {
+        text-align: center;
+      }
+    }
